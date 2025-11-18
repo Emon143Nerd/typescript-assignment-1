@@ -65,32 +65,41 @@ const getUniqueValues = (
 ) => {
   let uniqArr: (number | string)[] = [];
 
-  arr1.forEach((element) => {
+  for (let i = 0; i<arr1.length; i++){
     let exists = false;
-    uniqArr.forEach((item) => {
-      if (item === element) {
-        exists = true;
+    for(let j =0; j<uniqArr.length; j++){
+      if(uniqArr[j]=== arr1[i]){
+        exists=true;
+        break;
       }
-    });
-    if (exists === false) {
-      uniqArr.push(element);
     }
-  });
+    if(!exists){
+      uniqArr.push(arr1[i])
+    }
+  }
 
-  arr2.forEach((element) => {
+  for (let i = 0; i < arr2.length; i++) {
     let exists = false;
-    uniqArr.forEach((item) => {
-      if (item === element) {
+    for (let j = 0; j < uniqArr.length; j++) {
+      if (uniqArr[j] === arr2[i]) {
         exists = true;
+        break;
       }
-    });
-    if (exists === false) {
-      uniqArr.push(element);
     }
-  });
+    if (!exists) {
+      uniqArr.push(arr2[i]);
+    }
+  }
 
   return uniqArr;
 };
+
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [3, 4, 5, 6, 7];
+console.log(getUniqueValues(array1, array2));
+
+
+
 
 const calculateTotalPrice = (
   products: {
